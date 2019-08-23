@@ -4,13 +4,13 @@ const morgan = require('morgan')
 const cors = require('cors')
 const helmet = require('helmet')
 const { NODE_ENV } = require('./config')
+const newsRouter = require('./routes/news')
 
 const app = express()
 
 const morganSetting = process.env.NODE_ENV === 'production' ? 'tiny' : 'common'
 app.use(morgan(morganSetting))
 
-app.use(morgan(morganOption))
 app.use(cors())
 app.use(helmet())
 
@@ -25,6 +25,11 @@ app.use(
 app.get('/', (req, res) => {
   res.send('Hello, world!')
 })
+
+console.log('news router', newsRouter);
+
+app.use(newsRouter)
+
 
 
 app.use(function errorHandler(error, req, res, next) {
