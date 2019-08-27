@@ -26,22 +26,16 @@ app.get('/', (req, res) => {
   res.send('Hello, world!')
 })
 
-console.log('news router', newsRouter);
-
 app.use(newsRouter)
 
-
-
-app.use(function errorHandler(error, req, res, next) {
-     let response
-     if (NODE_ENV === 'production') {
-       response = { error: { message: 'server error' } }
-     } else {
-       console.error(error)
-       response = { message: error.message, error }
-     }
-     res.status(500).json(response)
-   })
-  
+app.use((error, req, res, next) => {
+  let response
+  if (process.env.NODE_ENV === 'production') {
+    response = { error: { message: 'server error' }}
+  } else {
+    response = { error }
+  }
+  res.status(500).json(response)
+})
 
 module.exports = app
