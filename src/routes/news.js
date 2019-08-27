@@ -28,22 +28,5 @@ const get_data = async url => {
 
   return get_data(url, settings);
 });
-/*
-  console.log("testing");
-  // get latest news
-  //cron.schedule("* * * * *", () => {
-    fetch(`${config.NEWS_ENDPOINT}`, {
-      headers: {
-        "x-api-key": `${config.API_KEY}`
-      }
-    }).then(
-      res =>
-        !res.ok
-          ? res.json().then(e => Promise.reject(e))
-          : res.json().then(JSON => Promise.resolve(JSON), console.log(JSON))
-    )
-    console.log('fetched')
-    //.catch(next)
-  });*/
 
 module.exports = newsRouter;
