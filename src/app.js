@@ -8,6 +8,7 @@ const newsRouter = require('./routes/news')
 const commentsRouter = require('./routes/comments')
 const authRouter = require('./routes/auth')
 const usersRouter = require('./routes/users')
+const articlesRouter = require('./routes/articles')
 
 const app = express()
 
@@ -29,6 +30,7 @@ app.get('/', (req, res) => {
   res.send('Hello, world!')
 })
 
+app.use('/api/articles', articlesRouter)
 app.use('/auth', authRouter)
 app.use('/users', usersRouter)
 app.use('/comments', commentsRouter)

@@ -10,7 +10,6 @@ commentsRouter
   .post(jsonBodyParser, (req, res, next) => {
     const { article_url, text, user_id } = req.body
     const newComment = { article_url, text, user_id }
-    console.log(article_url)
 
     for (const [key, value] of Object.entries(newComment))
       if (value == null)
